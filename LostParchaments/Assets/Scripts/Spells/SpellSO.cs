@@ -7,16 +7,26 @@ using UnityEngine;
 public class SpellSO : ScriptableObject
 {
     public string Name;
+    public Sprite Icon;
+    [SerializeField] private float cooldown;
+    private float _cooldownTimer;
     [SerializeField] int manaCost;
     [SerializeField] private GameObject spellPrefab;
 
-    public bool IsCastable(Stats stats) { return stats.CurrMana >= manaCost; }
+    public float Cooldown => cooldown;
+    public float CooldownTimer => _cooldownTimer;
+    public bool isOnCooldown => Time.time < _cooldownTimer;
+    public bool IsCastable(Stats stats)
+    {
+        return stats.CurrMana >= manaCost && !isOnCooldown;
+    }
 
     public void CastSpell(Stats stats, Transform castingPoint, Transform target)
     {
         if(!IsCastable(stats)) return;
         stats.ReduceMana(manaCost);
         Instantiate(spellPrefab, castingPoint);
+        _cooldownTimer = Time.time + cooldown;
     }
 
 }
