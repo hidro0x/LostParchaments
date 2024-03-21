@@ -19,8 +19,9 @@ public class SpellSlot : MonoBehaviour
     
 
 
-    private void InitSlot()
+    private void InitSlot(SpellSO spell)
     {
+        _spell = spell;
         spellIcon.sprite = _spell.Icon;
         
     }
@@ -29,6 +30,8 @@ public class SpellSlot : MonoBehaviour
     {
         background.color = _isSlotSelected ? Color.white : Color.yellow;
     }
+
+    public void SelectSlot() => _isSlotSelected = true;
 
 
     // Start is called before the first frame update

@@ -14,11 +14,7 @@ public class MainCharacter : MonoBehaviour
     {
         Stats = GetComponent<Stats>();
 
-        var spells = Resources.LoadAll<SpellSO>("SpellSO");
-        foreach (var spell in spells)
-        {
-            _spells.Add(spell);
-        }
+        
     }
 
 }
