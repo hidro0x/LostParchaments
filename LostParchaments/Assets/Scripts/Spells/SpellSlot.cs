@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class SpellSlot : MonoBehaviour
 {
@@ -12,18 +14,19 @@ public class SpellSlot : MonoBehaviour
 
     public TextMeshProUGUI cooldownText;
         
-    private SpellSO _spell;
+    [SerializeField]private SpellSO spell;
     private bool _isSlotSelected;
 
-    public SpellSO Spell => _spell;
-    
+    public SpellSO Spell => spell;
 
-
-    private void InitSlot(SpellSO spell)
+    private void Start()
     {
-        _spell = spell;
-        spellIcon.sprite = _spell.Icon;
-        
+        InitSlot();
+    }
+
+    private void InitSlot()
+    {
+        spellIcon.sprite = spell.Icon;
     }
     
     private void RefreshUI()
@@ -31,22 +34,25 @@ public class SpellSlot : MonoBehaviour
         background.color = _isSlotSelected ? Color.white : Color.yellow;
     }
 
-    public void SelectSlot() => _isSlotSelected = true;
-
-
-    // Start is called before the first frame update
-    void Start()
+    public SpellSlot SelectSlot()
     {
-        
+        _isSlotSelected = true;
+        RefreshUI();
+        return this;
     }
 
-    // Update is called once per frame
+    public void UnselectSlot()
+    {
+        _isSlotSelected = false;
+        RefreshUI();
+    }
+    
     void Update()
     {
-        if (_spell.isOnCooldown)
+        if (spell.isOnCooldown)
         {
-            var leftTime = _spell.CooldownTimer - Time.time;
-            cooldownPanel.fillAmount = leftTime / _spell.Cooldown;
+            var leftTime = spell.CooldownTimer - Time.time;
+            cooldownPanel.fillAmount = leftTime / spell.Cooldown;
             cooldownText.text = leftTime.ToString("F1") + "s";
         }
         else

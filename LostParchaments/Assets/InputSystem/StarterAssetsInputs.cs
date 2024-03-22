@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
@@ -12,6 +13,7 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		public int selectedSpell;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -19,6 +21,10 @@ namespace StarterAssets
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
+
+
+		public static Action<int> OnSpellChanged;
+		public static Action OnSpellThrowed;
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		public void OnMove(InputValue value)
@@ -42,6 +48,16 @@ namespace StarterAssets
 		public void OnSprint(InputValue value)
 		{
 			SprintInput(value.isPressed);
+		}
+
+		public void OnSelectSpell(InputValue value)
+		{
+			SelectInput(value.Get<float>());
+		}
+
+		public void OnThrowSpell()
+		{
+			OnSpellThrowed.Invoke();
 		}
 #endif
 
@@ -75,6 +91,14 @@ namespace StarterAssets
 		{
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
+
+		private void SelectInput(float spellNum)
+		{
+			selectedSpell = (int)spellNum;
+			OnSpellChanged.Invoke(selectedSpell);
+			
+		}
+		
 	}
 	
 }

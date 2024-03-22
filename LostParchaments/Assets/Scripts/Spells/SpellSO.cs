@@ -21,7 +21,7 @@ public class SpellSO : ScriptableObject
         return stats.CurrMana >= manaCost && !isOnCooldown;
     }
 
-    public void CastSpell(Stats stats, Transform castingPoint, Transform target)
+    public void CastSpell(Stats stats, Transform castingPoint)
     {
         if(!IsCastable(stats)) return;
         stats.ReduceMana(manaCost);
