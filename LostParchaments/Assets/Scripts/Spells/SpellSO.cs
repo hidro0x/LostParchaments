@@ -21,11 +21,12 @@ public class SpellSO : ScriptableObject
         return stats.CurrMana >= manaCost && !isOnCooldown;
     }
 
-    public void CastSpell(Stats stats, Transform castingPoint)
+    public void CastSpell(Entity entity)
     {
+        var stats = entity.Stats;
         if(!IsCastable(stats)) return;
         stats.ReduceMana(manaCost);
-        Instantiate(spellPrefab, castingPoint);
+        Instantiate(spellPrefab, entity.spellCastingPoint);
         _cooldownTimer = Time.time + cooldown;
     }
 

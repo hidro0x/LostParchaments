@@ -36,7 +36,7 @@ public class PlayerHUD : MonoBehaviour
     private void ThrowSpell()
     {
         if(SelectedSpellSlot == null) return;
-        SelectedSpellSlot.Spell.CastSpell(_mainCharacter.Stats , _mainCharacter.spellCastingPoint);
+        SelectedSpellSlot.Spell.CastSpell(_mainCharacter);
     }
 
     private void ChangeSpell(int i)
