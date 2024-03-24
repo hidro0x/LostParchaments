@@ -14,23 +14,34 @@ public class Throwable : MonoBehaviour
     {
         _transform = GetComponent<Transform>();
     }
-    
+
+    private void OnEnable()
+    {
+        _target = TargetSelector.Instance._targetInfo.Transform;
+        _transform.rotation = Quaternion.LookRotation(_target.position);
+    }
+
+    private void OnDisable()
+    {
+        _target = null;
+    }
+
 
     // Update is called once per frame
     void FixedUpdate()
     {
         Vector3 targetPos = _target.transform.position;
-        _transform.LookAt(targetPos);
-        transform.Translate(Vector3.forward * speed);
+        //_transform.rotation = Quaternion.LookRotation(_transform)
+        _transform.Translate(Vector3.forward * speed);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         //Particle effect oynat ve pool'a çevir..
-        Destroy(this);
         if (collision.gameObject.TryGetComponent(out IDamageable damageable))
         {
             damageable.OnHit(damage);
         }
+        Destroy(gameObject);
     }
 }

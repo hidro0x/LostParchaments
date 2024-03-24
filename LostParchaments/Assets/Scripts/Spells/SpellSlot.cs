@@ -14,10 +14,11 @@ public class SpellSlot : MonoBehaviour
 
     public TextMeshProUGUI cooldownText;
         
-    [SerializeField]private SpellSO spell;
+    [SerializeField]private SpellSO attachedSpell;
+    private SpellSO _spell;
     private bool _isSlotSelected;
 
-    public SpellSO Spell => spell;
+    public SpellSO Spell => _spell;
 
     private void Start()
     {
@@ -26,7 +27,8 @@ public class SpellSlot : MonoBehaviour
 
     private void InitSlot()
     {
-        spellIcon.sprite = spell.Icon;
+        _spell = Instantiate(attachedSpell);
+        spellIcon.sprite = _spell.Icon;
         cooldownPanel.fillAmount = 0f;
     }
     
@@ -50,10 +52,10 @@ public class SpellSlot : MonoBehaviour
     
     void Update()
     {
-        if (spell.isOnCooldown)
+        if (_spell.isOnCooldown)
         {
-            var leftTime = spell.CooldownTimer - Time.time;
-            cooldownPanel.fillAmount = leftTime / spell.Cooldown;
+            var leftTime = _spell.CooldownTimer - Time.time;
+            cooldownPanel.fillAmount = leftTime / _spell.Cooldown;
             cooldownText.text = leftTime.ToString("F1") + "s";
         }
         else

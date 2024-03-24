@@ -16,4 +16,5 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 5da6fe6905ac62c4b97270ecb8180914, type: 3}
   cooldown: 10
   manaCost: 10
-  spellPrefab: {fileID: 0}
+  spellPrefab: {fileID: 1777467878304004274, guid: d017adcea80348b46a7e3b5f613abd49,
+    type: 3}

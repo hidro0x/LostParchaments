@@ -889,7 +889,7 @@ Transform:
   m_GameObject: {fileID: 258070977}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.23, y: 0, z: 1.3}
+  m_LocalPosition: {x: -0, y: 1, z: 0.584}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -981,6 +981,11 @@ PrefabInstance:
     - target: {fileID: 5358658354415572920, guid: b616a1a2d33282b4c9816d0590e2b6c4,
         type: 3}
       propertyPath: spell
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5358658354415572920, guid: b616a1a2d33282b4c9816d0590e2b6c4,
+        type: 3}
+      propertyPath: attachedSpell
       value: 
       objectReference: {fileID: 11400000, guid: e2b50603f355bba4c8a52bf0830e79d5,
         type: 2}
@@ -1938,7 +1943,7 @@ Transform:
   m_GameObject: {fileID: 593954359}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.17, y: 0.732, z: 0.97}
+  m_LocalPosition: {x: 4.17, y: 1, z: 0.97}
   m_LocalScale: {x: 0.77903, y: 0.77903, z: 0.77903}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1958,8 +1963,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Yaratik
   stats:
-    baseHealth: 0
-    baseMana: 0
+    baseHealth: 50
+    baseMana: 50
   spellCastingPoint: {fileID: 0}
   isTargetable: 1
 --- !u!1 &652321980
@@ -2912,6 +2917,11 @@ PrefabInstance:
     - target: {fileID: 5358658354415572920, guid: b616a1a2d33282b4c9816d0590e2b6c4,
         type: 3}
       propertyPath: spell
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5358658354415572920, guid: b616a1a2d33282b4c9816d0590e2b6c4,
+        type: 3}
+      propertyPath: attachedSpell
       value: 
       objectReference: {fileID: 11400000, guid: e2b50603f355bba4c8a52bf0830e79d5,
         type: 2}
@@ -4918,6 +4928,11 @@ PrefabInstance:
         type: 3}
       propertyPath: spell
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5358658354415572920, guid: b616a1a2d33282b4c9816d0590e2b6c4,
+        type: 3}
+      propertyPath: attachedSpell
+      value: 
       objectReference: {fileID: 11400000, guid: e2b50603f355bba4c8a52bf0830e79d5,
         type: 2}
     - target: {fileID: 8138798618215537649, guid: b616a1a2d33282b4c9816d0590e2b6c4,
@@ -6464,6 +6479,11 @@ PrefabInstance:
     - target: {fileID: 5358658354415572920, guid: b616a1a2d33282b4c9816d0590e2b6c4,
         type: 3}
       propertyPath: spell
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5358658354415572920, guid: b616a1a2d33282b4c9816d0590e2b6c4,
+        type: 3}
+      propertyPath: attachedSpell
       value: 
       objectReference: {fileID: 11400000, guid: e2b50603f355bba4c8a52bf0830e79d5,
         type: 2}
@@ -8032,7 +8052,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4416926083347132227}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.68609965, z: -0, w: 0.7275076}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8042,7 +8062,7 @@ Transform:
   - {fileID: 272993188152429408}
   - {fileID: 258070978}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 86.644, z: 0}
 --- !u!1 &3904924581540644103
 GameObject:
   m_ObjectHideFlags: 0
