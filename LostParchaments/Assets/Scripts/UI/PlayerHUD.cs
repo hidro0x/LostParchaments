@@ -35,14 +35,13 @@ public class PlayerHUD : MonoBehaviour
     
     private void ThrowSpell()
     {
-        if(SelectedSpellSlot == null) return;
-        SelectedSpellSlot.Spell.CastSpell(_mainCharacter);
+        if(SelectedSpellSlot == null && TargetSelector.Instance._targetInfo.Transform == null) return;
+        SelectedSpellSlot.Spell.CastSpell(_mainCharacter, TargetSelector.Instance._targetInfo.Transform);
     }
 
     private void ChangeSpell(int i)
     {
-        if (SelectedSpellSlot == null) return;
-        SelectedSpellSlot.UnselectSlot();
+        if (SelectedSpellSlot != null) SelectedSpellSlot.UnselectSlot();
         SelectedSpellSlot = spellSlots[i - 1].SelectSlot();
     }
 }

@@ -27,11 +27,12 @@ public class SpellSlot : MonoBehaviour
     private void InitSlot()
     {
         spellIcon.sprite = spell.Icon;
+        cooldownPanel.fillAmount = 0f;
     }
     
     private void RefreshUI()
     {
-        background.color = _isSlotSelected ? Color.white : Color.yellow;
+        background.color = _isSlotSelected ? Color.yellow : Color.white;
     }
 
     public SpellSlot SelectSlot()

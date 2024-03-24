@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stats : MonoBehaviour, IDamageable
+[System.Serializable]
+public class Stats : IDamageable
 {
     [SerializeField] private int baseHealth, baseMana;
     private float _currHealth;
@@ -11,14 +12,9 @@ public class Stats : MonoBehaviour, IDamageable
 
     public float CurrHealth => _currHealth;
     public float CurrMana => _currMana;
+    
 
-
-    private void Awake()
-    {
-        Init();
-    }
-
-    void Init()
+    public void Init()
     {
         _currHealth = baseHealth;
         _currMana = baseMana;

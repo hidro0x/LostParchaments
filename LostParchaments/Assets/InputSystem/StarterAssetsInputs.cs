@@ -25,6 +25,7 @@ namespace StarterAssets
 
 		public static Action<int> OnSpellChanged;
 		public static Action OnSpellThrowed;
+		public static Action OnMouseClicked;
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		public void OnMove(InputValue value)
@@ -59,6 +60,11 @@ namespace StarterAssets
 		{
 			OnSpellThrowed.Invoke();
 		}
+
+		public void OnSelectTarget()
+		{
+			OnMouseClicked.Invoke();
+		}
 #endif
 
 
@@ -84,7 +90,7 @@ namespace StarterAssets
 
 		private void OnApplicationFocus(bool hasFocus)
 		{
-			SetCursorState(cursorLocked);
+			//SetCursorState(cursorLocked);
 		}
 
 		private void SetCursorState(bool newState)

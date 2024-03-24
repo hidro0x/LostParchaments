@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Throwable : SpellMono
+public class Throwable : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] private float speed;
+    private Transform _target;
     private Transform _transform;
 
     private void Awake()
@@ -18,9 +19,8 @@ public class Throwable : SpellMono
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 targetPos = Target.transform.position;
+        Vector3 targetPos = _target.transform.position;
         _transform.LookAt(targetPos);
-        
         transform.Translate(Vector3.forward * speed);
     }
 
