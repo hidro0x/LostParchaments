@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -26,7 +27,12 @@ public class SpellSO : ScriptableObject
     {
         var stats = entity.Stats;
         if(!IsCastable(stats)) return;
-        entity.transform.rotation = Quaternion.LookRotation(-entity.transform.position + target.transform.position);
+        var entityTransform = entity.transform;
+        entityTransform.LookAt(target);
+        var temp = Quaternion.LookRotation(entityTransform.position - target.position, Vector3.forward);
+        temp.x = 0;
+        temp.z = 0;
+        entityTransform.rotation = temp;
         stats.ReduceMana(manaCost);
         var spell =Instantiate(spellPrefab, entity.spellCastingPoint);
         spell.transform.SetParent(null);

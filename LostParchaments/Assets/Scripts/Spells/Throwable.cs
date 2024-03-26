@@ -30,8 +30,6 @@ public class Throwable : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 targetPos = _target.transform.position;
-        //_transform.rotation = Quaternion.LookRotation(_transform)
         _transform.Translate(Vector3.forward * speed);
     }
 
