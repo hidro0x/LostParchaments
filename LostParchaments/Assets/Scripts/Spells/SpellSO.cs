@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using DG.Tweening;
 
 [CreateAssetMenu(menuName = "Spells/Create Spell")]
 public class SpellSO : ScriptableObject
@@ -26,11 +27,14 @@ public class SpellSO : ScriptableObject
     {
         var stats = entity.Stats;
         if(!IsCastable(stats)) return;
-        entity.transform.rotation = Quaternion.LookRotation(-entity.transform.position + target.transform.position);
-        stats.ReduceMana(manaCost);
-        var spell =Instantiate(spellPrefab, entity.spellCastingPoint);
-        spell.transform.SetParent(null);
-        _cooldownTimer = Time.time + cooldown;
+        entity.transform.DOLookAt(target.position, 0.2f, AxisConstraint.Y).OnComplete(delegate
+        {
+            stats.ReduceMana(manaCost);
+            var spell =Instantiate(spellPrefab, entity.spellCastingPoint);
+            spell.transform.SetParent(null);
+            _cooldownTimer = Time.time + cooldown;
+        });
+        
     }
 
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Sirenix.Utilities;
 using UnityEngine;
 
-public class Entity : MonoBehaviour, ITargetable
+public class Entity : MonoBehaviour, ITargetable, IDamageable
 {
     public string Name;
     [SerializeField] private Stats stats;
@@ -32,6 +32,11 @@ public class Entity : MonoBehaviour, ITargetable
         else _info.Health = stats.CurrHealth;
 
         return _info;
+    }
+
+    public void OnHit(float damageAmount)
+    {
+        stats.ReduceHealth(damageAmount);
     }
 }
 

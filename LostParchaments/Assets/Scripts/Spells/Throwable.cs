@@ -1,39 +1,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class Throwable : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] private float speed;
-    private Transform _target;
+    
     private Transform _transform;
 
     private void Awake()
     {
         _transform = GetComponent<Transform>();
     }
+    
 
-    private void OnEnable()
+    private void FixedUpdate()
     {
-        _target = TargetSelector.Instance._targetInfo.Transform;
-        _transform.rotation = Quaternion.LookRotation(_target.position);
+        _transform.Translate(Vector3.forward * (Time.deltaTime * speed));
     }
 
-    private void OnDisable()
-    {
-        _target = null;
-    }
-
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        Vector3 targetPos = _target.transform.position;
-        //_transform.rotation = Quaternion.LookRotation(_transform)
-        _transform.Translate(Vector3.forward * speed);
-    }
 
     private void OnCollisionEnter(Collision collision)
     {

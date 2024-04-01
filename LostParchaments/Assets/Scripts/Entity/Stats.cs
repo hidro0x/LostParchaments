@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Stats : IDamageable
+public class Stats
 {
     [SerializeField] private int baseHealth, baseMana;
     private float _currHealth;
@@ -26,14 +26,10 @@ public class Stats : IDamageable
         _currMana -= amount;
     }
     
-    private void ReduceHealth(float amount)
+    public void ReduceHealth(float amount)
     {
         if(amount > _currHealth) return;
         _currHealth -= amount;
     }
-
-    public void OnHit(float damageAmount)
-    {
-        ReduceHealth(damageAmount);
-    }
+    
 }
