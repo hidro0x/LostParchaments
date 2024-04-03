@@ -20,7 +20,6 @@ public class Entity : MonoBehaviour, ITargetable, IDamageable
         stats.Init();
     }
 
-
     public Info GetInfo()
     {
         if (!isTargetable) return null;
