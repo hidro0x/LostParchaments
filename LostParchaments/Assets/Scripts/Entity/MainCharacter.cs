@@ -5,5 +5,9 @@ using UnityEngine;
 
 public class MainCharacter : Entity
 {
-
+    public override void OnHit(float damageAmount)
+    {
+        base.OnHit(damageAmount);
+        
+    }
 }

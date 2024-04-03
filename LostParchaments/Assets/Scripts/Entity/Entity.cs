@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.Utilities;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Entity : MonoBehaviour, ITargetable, IDamageable
@@ -20,6 +21,21 @@ public class Entity : MonoBehaviour, ITargetable, IDamageable
         stats.Init();
     }
 
+    private void OnEnable()
+    {
+        stats.OnHealthRunsOut += OnDie;
+    }
+
+    private void OnDisable()
+    {
+        stats.OnHealthRunsOut -= OnDie;
+    }
+
+    private void OnDie()
+    {
+        Destroy(gameObject);
+    }
+
     public Info GetInfo()
     {
         if (!isTargetable) return null;
@@ -33,7 +49,7 @@ public class Entity : MonoBehaviour, ITargetable, IDamageable
         return _info;
     }
 
-    public void OnHit(float damageAmount)
+    public virtual void OnHit(float damageAmount)
     {
         stats.ReduceHealth(damageAmount);
     }

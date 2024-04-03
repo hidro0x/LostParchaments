@@ -12,7 +12,7 @@ public class DamageableObject : MonoBehaviour, IDamageable, ITargetable
         if (damageAmount >= durability)
         {
             //Obje kırılsın.
-            Destroy(this);
+            Destroy(gameObject);
         }
         else durability -= damageAmount;
     }

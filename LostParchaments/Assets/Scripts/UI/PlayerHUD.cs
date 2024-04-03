@@ -25,8 +25,6 @@ public class PlayerHUD : MonoBehaviour
         StarterAssetsInputs.OnSpellThrowed += ThrowSpell;
     }
 
-    
-
     private void OnDisable()
     {
         StarterAssetsInputs.OnSpellChanged -= ChangeSpell;
@@ -43,5 +41,10 @@ public class PlayerHUD : MonoBehaviour
     {
         if (SelectedSpellSlot != null) SelectedSpellSlot.UnselectSlot();
         SelectedSpellSlot = spellSlots[i - 1].SelectSlot();
+    }
+
+    private void RefreshHUD()
+    {
+        
     }
 }
