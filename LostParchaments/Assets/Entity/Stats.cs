@@ -14,6 +14,9 @@ public class Stats
 
     public float CurrHealth => _currHealth;
     public float CurrMana => _currMana;
+
+    public int MaxHealth => baseHealth;
+    public int MaxMana => baseMana;
     
 
     public void Init()
@@ -30,7 +33,7 @@ public class Stats
     
     public void ReduceHealth(float amount)
     {
-        if (amount > _currHealth)
+        if (amount >= _currHealth)
         {
             OnHealthRunsOut?.Invoke();
             return;

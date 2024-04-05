@@ -15,13 +15,13 @@ public class TargetSelector : MonoBehaviour
     private Canvas _panel;
     
     public Image healthBarFill;
-
-
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI healthAmountText;
 
     private ITargetable CurrentTarget;
-    public Info _targetInfo{ get; private set; }
+    public Info targetInfo{ get; private set; }
+    
+    public EventChannelVoid OnHitChannel;
 
     public static TargetSelector Instance;
     
@@ -41,28 +41,25 @@ public class TargetSelector : MonoBehaviour
         _mainCam = Camera.main;
         _panel = GetComponent<Canvas>();
     }
-
-    private void Update()
-    {
-        if (_targetInfo != null)
-        {
-            RefreshUI();
-        }
-    }
+    
+    
 
     private void RefreshUI()
     {
-        healthAmountText.text = _targetInfo.Health.ToString("F0");
+        healthAmountText.text = targetInfo.Stats.CurrHealth.ToString("F0");
+        healthBarFill.fillAmount = targetInfo.Stats.CurrHealth / targetInfo.Stats.MaxHealth;
     }
 
     private void OnEnable()
     {
         StarterAssetsInputs.OnMouseClicked += Check;
+        OnHitChannel.OnEventRaised += RefreshUI;
     }
 
     private void OnDisable()
     {
         StarterAssetsInputs.OnMouseClicked -= Check;
+        OnHitChannel.OnEventRaised -= RefreshUI;
     }
 
     void Check()
@@ -78,19 +75,19 @@ public class TargetSelector : MonoBehaviour
 
     void SetUI(ITargetable targetable, Transform transform)
     {
-        _targetInfo = targetable?.GetInfo();
+        targetInfo = targetable?.GetInfo();
         
-        if (_targetInfo != null)
+        if (targetInfo != null)
         {
             _panel.enabled = true;
             
             _panel.transform.SetParent(transform);
             _panel.transform.localPosition = new Vector3(0,1.5f,0);
             
-            nameText.text = _targetInfo.Name;
+            nameText.text = targetInfo.Name;
             RefreshUI();
         }
         else _panel.enabled = false;
-
     }
+    
 }
