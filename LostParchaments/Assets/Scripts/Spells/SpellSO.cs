@@ -26,7 +26,8 @@ public class SpellSO : ScriptableObject
     {
         var stats = entity.Stats;
         if(!IsCastable(stats)) return;
-        entity.transform.rotation = Quaternion.LookRotation(-entity.transform.position + target.transform.position);
+        Vector3 targetPostition = new Vector3( target.position.x, entity.transform.position.y, target.position.z ) ;
+        entity.transform.LookAt( targetPostition ) ;
         stats.ReduceMana(manaCost);
         var spell =Instantiate(spellPrefab, entity.spellCastingPoint);
         spell.transform.SetParent(null);

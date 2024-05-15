@@ -18,7 +18,8 @@ public class Throwable : MonoBehaviour
     private void OnEnable()
     {
         _target = TargetSelector.Instance._targetInfo.Transform;
-        _transform.rotation = Quaternion.LookRotation(_target.position);
+        Vector3 targetPostition = new Vector3( _target.position.x, transform.position.y, _target.position.z ) ;
+        transform.LookAt( targetPostition ) ;
     }
 
     private void OnDisable()
@@ -30,8 +31,6 @@ public class Throwable : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 targetPos = _target.transform.position;
-        //_transform.rotation = Quaternion.LookRotation(_transform)
         _transform.Translate(Vector3.forward * speed);
     }
 
