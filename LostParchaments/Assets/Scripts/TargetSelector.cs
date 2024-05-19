@@ -16,6 +16,8 @@ public class TargetSelector : MonoBehaviour
     
     public Image healthBarFill;
 
+    public LayerMask layerMask;
+
 
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI healthAmountText;
@@ -24,8 +26,6 @@ public class TargetSelector : MonoBehaviour
     public Info _targetInfo{ get; private set; }
 
     public static TargetSelector Instance;
-    
-
 
     private void Awake()
     {
@@ -50,6 +50,11 @@ public class TargetSelector : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        transform.LookAt(transform.position + _mainCam.transform.rotation * Vector3.forward, _mainCam.transform.rotation * Vector3.up);
+    }
+
     private void RefreshUI()
     {
         healthAmountText.text = _targetInfo.Health.ToString("F0");
@@ -67,16 +72,28 @@ public class TargetSelector : MonoBehaviour
 
     void Check()
     {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        Ray ray = _mainCam.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            CurrentTarget = hit.transform.TryGetComponent(out ITargetable targetable) ? targetable : null;
-            SetUI(CurrentTarget, hit.transform);
+            Debug.Log(hit.transform.name);
+            Debug.DrawRay(ray.origin, ray.direction * 20, Color.yellow);
+            if (hit.transform.TryGetComponent(out ITargetable targetable))
+            {
+                CurrentTarget = targetable;
+                SetUI(CurrentTarget);
+            }
+            else
+            {
+                _panel.enabled = false;
+                CurrentTarget = null;
+                _targetInfo = null;
+            }
+
         }
     }
 
-    void SetUI(ITargetable targetable, Transform transform)
+    void SetUI(ITargetable targetable)
     {
         _targetInfo = targetable?.GetInfo();
         
@@ -84,13 +101,11 @@ public class TargetSelector : MonoBehaviour
         {
             _panel.enabled = true;
             
-            _panel.transform.SetParent(transform);
+            _panel.transform.SetParent(_targetInfo.Transform);
             _panel.transform.localPosition = new Vector3(0,1.5f,0);
-            
             nameText.text = _targetInfo.Name;
             RefreshUI();
         }
-        else _panel.enabled = false;
 
     }
 }

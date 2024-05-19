@@ -7,6 +7,7 @@ public interface ITargetable
     public Info GetInfo();
 }
 
+[System.Serializable]
 public class Info
 {
     public string Name;
