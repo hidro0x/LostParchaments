@@ -11,12 +11,12 @@ public interface ITargetable
 public class Info
 {
     public string Name;
-    public float Health;
+    public Stats Stats;
     public Transform Transform;
-    public Info(string name, float health, Transform transform)
+    public Info(string name, Stats stats, Transform transform)
     {
         Name = name;
-        Health = health;
+        Stats = stats;
         Transform = transform;
     }
     
