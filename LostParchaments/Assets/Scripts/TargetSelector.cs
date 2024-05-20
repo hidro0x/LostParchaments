@@ -23,7 +23,7 @@ public class TargetSelector : MonoBehaviour
     public TextMeshProUGUI healthAmountText;
 
     private ITargetable CurrentTarget;
-    public Info _targetInfo{ get; private set; }
+    public Info targetInfo{ get; private set; }
 
     public static TargetSelector Instance;
 
@@ -44,7 +44,7 @@ public class TargetSelector : MonoBehaviour
 
     private void Update()
     {
-        if (_targetInfo != null)
+        if (targetInfo != null)
         {
             RefreshUI();
         }
@@ -57,7 +57,7 @@ public class TargetSelector : MonoBehaviour
 
     private void RefreshUI()
     {
-        healthAmountText.text = _targetInfo.Health.ToString("F0");
+        healthAmountText.text = targetInfo.Health.ToString("F0");
     }
 
     private void OnEnable()
@@ -74,7 +74,7 @@ public class TargetSelector : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        if (Physics.Raycast(ray, out hit))
         {
             Debug.Log(hit.transform.name);
             Debug.DrawRay(ray.origin, ray.direction * 20, Color.yellow);
@@ -87,7 +87,7 @@ public class TargetSelector : MonoBehaviour
             {
                 _panel.enabled = false;
                 CurrentTarget = null;
-                _targetInfo = null;
+                targetInfo = null;
             }
 
         }
@@ -95,15 +95,15 @@ public class TargetSelector : MonoBehaviour
 
     void SetUI(ITargetable targetable)
     {
-        _targetInfo = targetable?.GetInfo();
+        targetInfo = targetable.GetInfo();
         
-        if (_targetInfo != null)
+        if (targetInfo != null)
         {
             _panel.enabled = true;
             
-            _panel.transform.SetParent(_targetInfo.Transform);
+            _panel.transform.SetParent(targetInfo.Transform);
             _panel.transform.localPosition = new Vector3(0,1.5f,0);
-            nameText.text = _targetInfo.Name;
+            nameText.text = targetInfo.Name;
             RefreshUI();
         }
 

@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Skeleton_Warrior : MonoBehaviour
+public class Skeleton_Warrior : Entity
 {
     private NavMeshAgent navAgent;
     public Transform player;
     public LayerMask groundLayer, playerLayer;
-    public float health;
     public float walkPointRange;
     public float timeBetweenAttacks;
     public float sightRange;
@@ -27,6 +26,11 @@ public class Skeleton_Warrior : MonoBehaviour
         //animator = GetComponent<Animator>();
         player = GameObject.Find("Player").transform;
         navAgent = GetComponent<NavMeshAgent>();
+    }
+
+    protected override void OnDie()
+    {
+        Debug.Log("Öldü");
     }
 
     private void Update()
@@ -142,35 +146,10 @@ public class Skeleton_Warrior : MonoBehaviour
     }
 }
 
-
     private void ResetAttack()
     {
         alreadyAttacked = false;
         //animator.SetBool("Attack", false);
-    }
-
-    public void TakeDamage(float damage)
-    {
-        health -= damage;
-        //hitEffect.Play();
-        StartCoroutine(TakeDamageCoroutine());
-
-        if (health <= 0)
-        {
-            Invoke(nameof(DestroyEnemy), 0.5f);
-        }
-    }
-
-    private IEnumerator TakeDamageCoroutine()
-    {
-        takeDamage = true;
-        yield return new WaitForSeconds(2f);
-        takeDamage = false;
-    }
-
-    private void DestroyEnemy()
-    {
-        StartCoroutine(DestroyEnemyCoroutine());
     }
 
     private IEnumerator DestroyEnemyCoroutine()

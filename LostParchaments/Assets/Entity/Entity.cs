@@ -40,7 +40,7 @@ public abstract class Entity : MonoBehaviour, ITargetable, IDamageable
         
         if (_info == null)
         {
-            _info = new Info(Name, stats, transform);
+            _info = new Info(Name, stats.CurrHealth, transform);
         }
 
         return _info;
