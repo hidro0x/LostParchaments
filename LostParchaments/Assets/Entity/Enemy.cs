@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Skeleton_Warrior : Entity
+public class Enemy : Entity
 {
     private NavMeshAgent navAgent;
     public Transform player;
@@ -21,8 +21,9 @@ public class Skeleton_Warrior : Entity
     private bool alreadyAttacked;
     private bool takeDamage;
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         //animator = GetComponent<Animator>();
         player = GameObject.Find("Player").transform;
         navAgent = GetComponent<NavMeshAgent>();
@@ -30,7 +31,8 @@ public class Skeleton_Warrior : Entity
 
     protected override void OnDie()
     {
-        Debug.Log("Öldü");
+        DataHolder.Instance.AddToData_Enemy(Type);
+        QuestManager.UpdateQuestProgress?.Invoke(QuestType.KILL_MOB);
     }
 
     private void Update()
@@ -167,3 +169,5 @@ public class Skeleton_Warrior : Entity
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 }
+
+

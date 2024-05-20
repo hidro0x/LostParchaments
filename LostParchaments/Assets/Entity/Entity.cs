@@ -8,6 +8,7 @@ using UnityEngine;
 public abstract class Entity : MonoBehaviour, ITargetable, IDamageable
 {
     public string Name;
+    public EntityType Type;
     [SerializeField] private Stats stats;
 
     public Transform spellCastingPoint;
@@ -17,7 +18,7 @@ public abstract class Entity : MonoBehaviour, ITargetable, IDamageable
     
     public EventChannelVoid OnHitChannel;
     
-    private void Awake()
+    public virtual void Awake()
     {
         stats.Init();
     }
@@ -37,11 +38,7 @@ public abstract class Entity : MonoBehaviour, ITargetable, IDamageable
     public Info GetInfo()
     {
         if (!isTargetable) return null;
-        
-        if (_info == null)
-        {
-            _info = new Info(Name, stats.CurrHealth, transform);
-        }
+        _info = new Info(Name, stats.CurrHealth, transform);
 
         return _info;
     }
@@ -51,6 +48,13 @@ public abstract class Entity : MonoBehaviour, ITargetable, IDamageable
         stats.ReduceHealth(damageAmount);
         OnHitChannel.OnEventRaised?.Invoke();
     }
+}
+
+[System.Serializable]
+public enum EntityType
+{
+    PLAYER,
+    SKELETON,
 }
 
 

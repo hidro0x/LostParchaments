@@ -16,7 +16,7 @@ public class TargetSelector : MonoBehaviour
     
     public Image healthBarFill;
 
-    public LayerMask layerMask;
+    public LayerMask targetLayer;
 
 
     public TextMeshProUGUI nameText;
@@ -74,7 +74,7 @@ public class TargetSelector : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, targetLayer))
         {
             Debug.Log(hit.transform.name);
             Debug.DrawRay(ray.origin, ray.direction * 20, Color.yellow);

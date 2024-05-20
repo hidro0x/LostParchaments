@@ -10,9 +10,4 @@ public class MainCharacter : Entity
         Time.timeScale = 0;
     }
 
-    public override void OnHit(float damageAmount)
-    {
-        base.OnHit(damageAmount);
-        
-    }
 }
