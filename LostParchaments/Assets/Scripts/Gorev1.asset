@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382d6d76f7ec4e54d89b90691cdfd57b, type: 3}
   m_Name: Gorev1
   m_EditorClassIdentifier: 
-  Name: 
-  Description: 
-  Dialogue: 
-  state: 0
+  Name: Iskelet Oldur
+  Description: Iskeletleri oldur
+  Dialogue: Iskeletleri oldurerek bana cok yardimci olursun!
+  state: 1
   type: 0
-  target: 0
-  targetType: 0
+  target: 3
+  targetType: 1
