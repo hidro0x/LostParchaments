@@ -46630,6 +46630,7 @@ MonoBehaviour:
   Name: Huseyin
   quests:
   - {fileID: 11400000, guid: b9c39460728b3d64ebe0d27dd8af2636, type: 2}
+  - {fileID: 11400000, guid: 51c32f6ebb665ad4d91edbce79d38f31, type: 2}
   _textBox: {fileID: 111887245}
 --- !u!65 &1748623496
 BoxCollider:
