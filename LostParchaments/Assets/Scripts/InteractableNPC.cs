@@ -7,9 +7,18 @@ public class InteractableNPC : MonoBehaviour, IInteractable
 {
     public string Name;
     [SerializeField] List<Quest> quests;
+    private List<Quest> _tempQuests;
 
-    private Canvas _textBox;
+    [SerializeField]private Canvas _textBox;
 
+    private void Awake()
+    {
+        _tempQuests = new List<Quest>();
+        foreach (var quest in quests)
+        {
+            _tempQuests.Add(Instantiate(quest));
+        }
+    }
 
     public void Interact()
     {
@@ -18,7 +27,7 @@ public class InteractableNPC : MonoBehaviour, IInteractable
 
     private Quest SelectQuest()
     {
-        foreach (var quest in quests)
+        foreach (var quest in _tempQuests)
         {
             if (quest.State == QuestStates.QUEST_AVAILABLE) return quest;
         }
@@ -36,7 +45,7 @@ public class InteractableNPC : MonoBehaviour, IInteractable
 
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.E) && !_textBox.isActiveAndEnabled)
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Interact();
         }

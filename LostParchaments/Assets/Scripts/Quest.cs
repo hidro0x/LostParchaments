@@ -39,7 +39,6 @@ public abstract class Quest : ScriptableObject
 [System.Serializable]
 public enum QuestStates
 {
-    QUEST_LOCKED,
     QUEST_AVAILABLE,
     QUEST_IN_PROGRESS,
     QUEST_COMPLETED,
@@ -49,6 +48,5 @@ public enum QuestStates
 public enum QuestType
 {
     KILL_MOB,
-    COLLECT_PART,
-    REACH_POINT,
+    PUZZLE,
 }

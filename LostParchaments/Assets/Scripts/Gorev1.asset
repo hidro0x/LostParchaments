@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Iskelet Oldur
   Description: Iskeletleri oldur
   Dialogue: Iskeletleri oldurerek bana cok yardimci olursun!
-  state: 1
+  state: 0
   type: 0
   target: 3
   targetType: 1

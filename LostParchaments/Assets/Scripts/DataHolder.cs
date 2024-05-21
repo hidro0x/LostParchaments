@@ -11,6 +11,7 @@ public class DataHolder : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        _killedEntities = new Dictionary<string, int>();
     }
     
 

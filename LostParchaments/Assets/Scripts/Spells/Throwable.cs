@@ -19,7 +19,7 @@ public class Throwable : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _transform.Translate(Vector3.forward * (Time.deltaTime * speed));
+        _transform.Translate(Vector3.forward * (Time.deltaTime * speed * 2));
     }
 
 

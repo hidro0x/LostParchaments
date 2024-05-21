@@ -22,10 +22,12 @@ public class DialogueManager : MonoBehaviour
     {
         Instance = this;
         cancelBtn.onClick.AddListener(CloseUI);
+
     }
 
     public void OpenDialogue(InteractableNPC npc, Quest quest)
     {
+        if(quest == null) return;
         SetCam(npc.transform);
         SetUI(quest);
     }
@@ -37,6 +39,7 @@ public class DialogueManager : MonoBehaviour
         
         confirmBtn.onClick.RemoveAllListeners();
         confirmBtn.onClick.AddListener(() => QuestManager.OnQuestStarted(quest));
+        confirmBtn.onClick.AddListener(CloseUI);
 
         textCanvas.enabled = true;
         playerHudCanvas.enabled = false;

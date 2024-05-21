@@ -14,6 +14,7 @@ public class Enemy : Entity
     public float attackRange;
     public int damage;
     //public Animator animator;
+    public Animation Animation;
     //public ParticleSystem hitEffect;
 
     private Vector3 walkPoint;
@@ -27,12 +28,15 @@ public class Enemy : Entity
         //animator = GetComponent<Animator>();
         player = GameObject.Find("Player").transform;
         navAgent = GetComponent<NavMeshAgent>();
+        Animation = GetComponent<Animation>();
     }
 
     protected override void OnDie()
     {
         DataHolder.Instance.AddToData_Enemy(Type);
         QuestManager.UpdateQuestProgress?.Invoke(QuestType.KILL_MOB);
+        TargetSelector.Instance.ResetPanel();
+        Destroy(gameObject);
     }
 
     private void Update()
@@ -83,7 +87,7 @@ public class Enemy : Entity
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
         //animator.SetFloat("Velocity", 0.2f);
-
+        Animation.Play("skeleton-skeleton|run");
         if (distanceToWalkPoint.magnitude < 1f)
         {
             walkPointSet = false;
@@ -95,8 +99,8 @@ public class Enemy : Entity
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, groundLayer))
+        Debug.DrawRay(walkPoint, -transform.up * 20, Color.blue);
+        if (Physics.Raycast(walkPoint, -transform.up,300f, groundLayer))
         {
             walkPointSet = true;
         }
@@ -105,7 +109,8 @@ public class Enemy : Entity
    private void ChasePlayer()
 {
     navAgent.SetDestination(player.position);
-    //animator.SetFloat("Velocity", 0.6f);
+    //animator.SetFloat("Velocity", 0.2f);
+    Animation.Play("skeleton-skeleton|run");
     navAgent.isStopped = false; // Add this line
 }
 
@@ -113,13 +118,16 @@ public class Enemy : Entity
   private void AttackPlayer()
 {
     navAgent.SetDestination(transform.position);
+    Animation.Play("skeleton-skeleton|idle");
 
     if (!alreadyAttacked)
     {
         Vector3 targetPostition = new Vector3( player.position.x, transform.position.y, player.position.z ) ;
         transform.LookAt(targetPostition);
         alreadyAttacked = true;
-        //animator.SetBool("Attack", true);
+        //animator.SetFloat("Velocity", 0);
+        //animator.SetTrigger("Attack");
+        Animation.Play("skeleton-skeleton|attack");
         Invoke(nameof(ResetAttack), timeBetweenAttacks);
 
         RaycastHit hit;
@@ -151,7 +159,7 @@ public class Enemy : Entity
     private void ResetAttack()
     {
         alreadyAttacked = false;
-        //animator.SetBool("Attack", false);
+        Animation.Play("skeleton-skeleton|idle");
     }
 
     private IEnumerator DestroyEnemyCoroutine()

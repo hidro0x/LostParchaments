@@ -77,7 +77,6 @@ public class TargetSelector : MonoBehaviour
         if (Physics.Raycast(ray, out hit, targetLayer))
         {
             Debug.Log(hit.transform.name);
-            Debug.DrawRay(ray.origin, ray.direction * 20, Color.yellow);
             if (hit.transform.TryGetComponent(out ITargetable targetable))
             {
                 CurrentTarget = targetable;
@@ -92,6 +91,7 @@ public class TargetSelector : MonoBehaviour
 
         }
     }
+    public void ResetPanel() => _panel.transform.SetParent(null);
 
     void SetUI(ITargetable targetable)
     {
@@ -102,7 +102,8 @@ public class TargetSelector : MonoBehaviour
             _panel.enabled = true;
             
             _panel.transform.SetParent(targetInfo.Transform);
-            _panel.transform.localPosition = new Vector3(0,1.5f,0);
+            _panel.transform.localPosition = new Vector3(0, 1.5f, 0);
+            _panel.transform.localScale = Vector3.one;
             nameText.text = targetInfo.Name;
             RefreshUI();
         }

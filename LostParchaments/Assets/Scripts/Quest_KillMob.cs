@@ -10,7 +10,13 @@ public class Quest_KillMob : Quest
     public override bool Check()
     {
         var amount = DataHolder.Instance.GetData_Enemy(targetType);
-        return amount >= target;
+        if (amount >= target)
+        {
+            CompleteQuest();
+            return true;
+        }
+        
+        return false;
     }
 
     public override string Progress()
