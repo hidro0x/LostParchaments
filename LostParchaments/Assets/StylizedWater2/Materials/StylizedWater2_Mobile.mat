@@ -10,6 +10,8 @@ Material:
   m_Name: StylizedWater2_Mobile
   m_Shader: {fileID: -6465566751694194690, guid: d7b0192b9bf19c949900035fa781fdc4,
     type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ENVIRONMENTREFLECTIONS_OFF
   - _FOAM
@@ -31,6 +33,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -148,10 +151,10 @@ Material:
     - _Cutoff: 0.5
     - _Depth: 5.01
     - _DepthExp: 1
-    - _DepthHorizontal: 1
+    - _DepthHorizontal: 0.01
     - _DepthMode: 0
     - _DepthTexture: 1
-    - _DepthVertical: 4
+    - _DepthVertical: 0.4
     - _DisableDepthTexture: 0
     - _DistanceNormalsOn: 0
     - _DistanceNormalsTiling: 0.25
