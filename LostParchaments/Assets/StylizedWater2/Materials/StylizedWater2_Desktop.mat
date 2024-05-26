@@ -276,7 +276,7 @@ Material:
     - _VertexColorWaveFlattening: 1
     - _WaveCount: 2
     - _WaveDistance: 0.775
-    - _WaveHeight: 0.1
+    - _WaveHeight: 3.1
     - _WaveNormalStr: 0.1
     - _WaveSpeed: 2.3999996
     - _WaveSteepness: 0
