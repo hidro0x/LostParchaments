@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class Enemy : Entity
 {
@@ -14,6 +17,8 @@ public class Enemy : Entity
     public float attackRange;
     public int damage;
     private Animator animator;
+
+    public Transform raycastPoint;
     //public ParticleSystem hitEffect;
 
     private Vector3 walkPoint;
@@ -35,6 +40,7 @@ public class Enemy : Entity
         QuestManager.UpdateQuestProgress?.Invoke(QuestType.KILL_MOB);
         Destroy(gameObject);
     }
+    
 
     private void Update()
     {
@@ -113,19 +119,32 @@ public class Enemy : Entity
   private void AttackPlayer()
 {
     navAgent.SetDestination(transform.position);
-
+    Vector3 targetPostition = new Vector3( player.position.x, transform.position.y, player.position.z ) ;
+    transform.LookAt(targetPostition);
+    animator.SetFloat("Velocity", 0);
+    Debug.DrawRay(raycastPoint.position, raycastPoint.forward, Color.black);
     if (!alreadyAttacked)
     {
-        Vector3 targetPostition = new Vector3( player.position.x, transform.position.y, player.position.z ) ;
-        transform.LookAt(targetPostition);
+        
         alreadyAttacked = true;
-        animator.SetFloat("Velocity", 0);
+
         animator.SetTrigger("Attack");
         Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        Invoke(nameof(Attack), animator.GetCurrentAnimatorStateInfo(0).length-0.3f);
+        
+    }
+}
 
+    private void ResetAttack()
+    {
+        alreadyAttacked = false;
+    }
+
+    private void Attack()
+    {
         RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.forward, Color.black);
-        if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange))
+
+        if (Physics.Raycast(raycastPoint.position, raycastPoint.forward, out hit, attackRange))
         {
             
             if (hit.transform.gameObject.CompareTag("Player"))
@@ -136,22 +155,7 @@ public class Enemy : Entity
                     stats.OnHit(damage);
                 }
             }
-            /*
-                YOU CAN USE THIS TO GET THE PLAYER HUD AND CALL THE TAKE DAMAGE FUNCTION
-
-            PlayerHUD playerHUD = hit.transform.GetComponent<PlayerHUD>();
-            if (playerHUD != null)
-            {
-               playerHUD.takeDamage(damage);
-            }
-             */
         }
-    }
-}
-
-    private void ResetAttack()
-    {
-        alreadyAttacked = false;
     }
 
     private IEnumerator DestroyEnemyCoroutine()
