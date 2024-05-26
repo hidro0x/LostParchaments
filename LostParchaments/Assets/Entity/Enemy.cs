@@ -13,8 +13,7 @@ public class Enemy : Entity
     public float sightRange;
     public float attackRange;
     public int damage;
-    //public Animator animator;
-    public Animation Animation;
+    private Animator animator;
     //public ParticleSystem hitEffect;
 
     private Vector3 walkPoint;
@@ -25,10 +24,9 @@ public class Enemy : Entity
     public override void Awake()
     {
         base.Awake();
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         player = GameObject.Find("Player").transform;
         navAgent = GetComponent<NavMeshAgent>();
-        Animation = GetComponent<Animation>();
     }
 
     protected override void OnDie()
@@ -85,8 +83,7 @@ public class Enemy : Entity
         }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
-        //animator.SetFloat("Velocity", 0.2f);
-        Animation.Play("skeleton-skeleton|run");
+        animator.SetFloat("Velocity", 0.2f);
         if (distanceToWalkPoint.magnitude < 1f)
         {
             walkPointSet = false;
@@ -108,8 +105,7 @@ public class Enemy : Entity
    private void ChasePlayer()
 {
     navAgent.SetDestination(player.position);
-    //animator.SetFloat("Velocity", 0.2f);
-    Animation.Play("skeleton-skeleton|run");
+    animator.SetFloat("Velocity", 0.2f);
     navAgent.isStopped = false; // Add this line
 }
 
@@ -117,16 +113,14 @@ public class Enemy : Entity
   private void AttackPlayer()
 {
     navAgent.SetDestination(transform.position);
-    Animation.Play("skeleton-skeleton|idle");
 
     if (!alreadyAttacked)
     {
         Vector3 targetPostition = new Vector3( player.position.x, transform.position.y, player.position.z ) ;
         transform.LookAt(targetPostition);
         alreadyAttacked = true;
-        //animator.SetFloat("Velocity", 0);
-        //animator.SetTrigger("Attack");
-        Animation.Play("skeleton-skeleton|attack");
+        animator.SetFloat("Velocity", 0);
+        animator.SetTrigger("Attack");
         Invoke(nameof(ResetAttack), timeBetweenAttacks);
 
         RaycastHit hit;
@@ -158,12 +152,11 @@ public class Enemy : Entity
     private void ResetAttack()
     {
         alreadyAttacked = false;
-        Animation.Play("skeleton-skeleton|idle");
     }
 
     private IEnumerator DestroyEnemyCoroutine()
     {
-        //animator.SetBool("Dead", true);
+        animator.SetBool("isDead", true);
         yield return new WaitForSeconds(1.8f);
         Destroy(gameObject);
     }
