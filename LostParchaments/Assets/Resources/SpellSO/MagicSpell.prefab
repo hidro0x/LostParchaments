@@ -24252,3 +24252,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   impactParticle: {fileID: 193692, guid: 2aa1e7c21640d254492fa8035a6411e1, type: 3}
+  radius: 20
+  power: 2000

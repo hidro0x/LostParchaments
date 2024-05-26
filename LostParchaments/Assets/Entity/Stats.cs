@@ -25,6 +25,28 @@ public class Stats
         _currMana = baseMana;
     }
 
+    public void GiveHealth(float amount)
+    {
+        if (amount + _currHealth > MaxHealth)
+        {
+            _currHealth = MaxHealth;
+            return;
+        }
+
+        _currHealth += amount;
+    }
+    
+    public void GiveMana(float amount)
+    {
+        if (amount + _currMana > MaxMana)
+        {
+            _currMana = MaxMana;
+            return;
+        }
+
+        _currMana += amount;
+    }
+
     public void ReduceMana(float amount)
     {
         if(amount > _currMana) return;

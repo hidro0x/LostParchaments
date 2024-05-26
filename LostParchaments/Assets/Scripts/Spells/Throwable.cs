@@ -50,7 +50,7 @@ public class Throwable : MonoBehaviour, ICastable
         Destroy(gameObject);
     }
 
-    public void Cast(Vector3 point)
+    public void Cast(Entity entity,Vector3 point)
     {
         transform.LookAt(point);
         //_transform.DOLookAt(point, 0f, AxisConstraint.Y); //Sets the projectiles rotation to look at the point clicked
