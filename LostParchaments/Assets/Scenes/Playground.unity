@@ -4446,7 +4446,7 @@ MonoBehaviour:
   background: {fileID: 5411624204452246771}
   cooldownPanel: {fileID: 2793221554974812006}
   cooldownText: {fileID: 3671509559651654652}
-  attachedSpell: {fileID: 11400000, guid: e2b50603f355bba4c8a52bf0830e79d5, type: 2}
+  attachedSpell: {fileID: 11400000, guid: 155eca629aff7a84eb87f7e409fb5ca5, type: 2}
 --- !u!1 &6529109005412286314
 GameObject:
   m_ObjectHideFlags: 0
