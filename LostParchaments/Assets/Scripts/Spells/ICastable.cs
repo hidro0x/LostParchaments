@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ICastable
 {
-    void Cast(Vector3 point);
+    void Cast(Entity entity, Vector3 point);
 }

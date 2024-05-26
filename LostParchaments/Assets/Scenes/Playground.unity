@@ -219,6 +219,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy1
       objectReference: {fileID: 0}
+    - target: {fileID: 5257378840205987420, guid: fc35ca2d2f636084f8dc05a7875d2177,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.9267163
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257378840205987420, guid: fc35ca2d2f636084f8dc05a7875d2177,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.2885747
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257378840205987420, guid: fc35ca2d2f636084f8dc05a7875d2177,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.018174186
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257378840205987420, guid: fc35ca2d2f636084f8dc05a7875d2177,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.13471198
+      objectReference: {fileID: 0}
+    - target: {fileID: 5301676507390126787, guid: fc35ca2d2f636084f8dc05a7875d2177,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6329886034238643500, guid: fc35ca2d2f636084f8dc05a7875d2177,
         type: 3}
       propertyPath: m_Speed

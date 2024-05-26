@@ -37,7 +37,7 @@ public class SpellSO : ScriptableObject
                 entity.transform.DOLookAt(hit.point, 0.3f, AxisConstraint.Y).OnComplete(delegate
                 {
                     GameObject spell = Instantiate(spellPrefab, entity.spellCastingPoint.position, Quaternion.identity);
-                    spell.GetComponent<ICastable>().Cast(hit.point);
+                    spell.GetComponent<ICastable>().Cast(entity,hit.point);
                     _cooldownTimer = Time.time + cooldown;
                 });
                 
