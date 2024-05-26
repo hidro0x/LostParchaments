@@ -30,17 +30,23 @@ public class SpellSO : ScriptableObject
         if(!IsCastable(stats)) return;
         stats.ReduceMana(manaCost);
         RaycastHit hit;
-        if (!EventSystem.current.IsPointerOverGameObject()) //Checks if the mouse is not over a UI part
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f)) //Finds the point where you click with the mouse
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f))
             {
-                GameObject spell = Instantiate(spellPrefab, entity.spellCastingPoint.position, Quaternion.identity); //Spawns the selected project
-                spell.GetComponent<ICastable>().Cast(hit.point);
-                _cooldownTimer = Time.time + cooldown;
+                entity.transform.DOLookAt(hit.point, 0.3f, AxisConstraint.Y).OnComplete(delegate
+                {
+                    GameObject spell = Instantiate(spellPrefab, entity.spellCastingPoint.position, Quaternion.identity);
+                    spell.GetComponent<ICastable>().Cast(hit.point);
+                    _cooldownTimer = Time.time + cooldown;
+                });
+                
             }
         }
 
     }
+    
+    
 
 }
 
