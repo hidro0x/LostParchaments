@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.EventSystems;
 
 [CreateAssetMenu(menuName = "Spells/Create Spell")]
 public class SpellSO : ScriptableObject
@@ -23,18 +24,22 @@ public class SpellSO : ScriptableObject
         return stats.CurrMana >= manaCost && !isOnCooldown;
     }
 
-    public void CastSpell(Entity entity, Transform target)
+    public void CastSpell(Entity entity)
     {
         var stats = entity.Stats;
         if(!IsCastable(stats)) return;
         stats.ReduceMana(manaCost);
-        entity.transform.DOLookAt(target.position, 0.2f, AxisConstraint.Y).OnComplete(delegate
+        RaycastHit hit;
+        if (!EventSystem.current.IsPointerOverGameObject()) //Checks if the mouse is not over a UI part
         {
-            var spell =Instantiate(spellPrefab, entity.spellCastingPoint);
-            spell.transform.SetParent(null);
-            _cooldownTimer = Time.time + cooldown;
-        });
-        
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f)) //Finds the point where you click with the mouse
+            {
+                GameObject spell = Instantiate(spellPrefab, entity.spellCastingPoint.position, Quaternion.identity); //Spawns the selected project
+                spell.GetComponent<ICastable>().Cast(hit.point);
+                _cooldownTimer = Time.time + cooldown;
+            }
+        }
+
     }
 
 }

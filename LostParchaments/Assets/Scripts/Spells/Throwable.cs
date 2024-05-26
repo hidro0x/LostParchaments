@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class Throwable : MonoBehaviour
+public class Throwable : MonoBehaviour, ICastable
 {
     [SerializeField] private int damage;
     [SerializeField] private float speed;
@@ -14,12 +14,6 @@ public class Throwable : MonoBehaviour
     private void Awake()
     {
         _transform = GetComponent<Transform>();
-    }
-    
-
-    private void FixedUpdate()
-    {
-        _transform.Translate(Vector3.forward * (Time.deltaTime * speed * 2));
     }
 
 
@@ -31,5 +25,12 @@ public class Throwable : MonoBehaviour
             damageable.OnHit(damage);
         }
         Destroy(gameObject);
+    }
+
+    public void Cast(Vector3 point)
+    {
+        _transform.LookAt(point); //Sets the projectiles rotation to look at the point clicked
+        GetComponent<Rigidbody>().AddForce(_transform.forward * speed); //Set the speed of the projectile by applying force to the rigidbody
+        _transform.SetParent(null);
     }
 }
