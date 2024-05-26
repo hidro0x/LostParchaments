@@ -35,7 +35,6 @@ public class Enemy : Entity
     {
         DataHolder.Instance.AddToData_Enemy(Type);
         QuestManager.UpdateQuestProgress?.Invoke(QuestType.KILL_MOB);
-        TargetSelector.Instance.ResetPanel();
         Destroy(gameObject);
     }
 

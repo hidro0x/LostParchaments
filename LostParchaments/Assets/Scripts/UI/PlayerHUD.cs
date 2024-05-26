@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using StarterAssets;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -45,8 +46,8 @@ public class PlayerHUD : MonoBehaviour
     
     private void ThrowSpell()
     {
-        if(SelectedSpellSlot == null && TargetSelector.Instance.targetInfo.Transform == null) return;
-        SelectedSpellSlot.Spell.CastSpell(_mainCharacter, TargetSelector.Instance.targetInfo.Transform);
+        if(SelectedSpellSlot == null) return;
+        SelectedSpellSlot.Spell.CastSpell(_mainCharacter);
         RefreshHUD();
         
     }
