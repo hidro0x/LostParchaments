@@ -14,6 +14,7 @@ public class BuffSpell : MonoBehaviour, ICastable
         entity.Stats.GiveHealth(healthAmount);
         entity.Stats.GiveMana(manaAmount);
         var temp = Instantiate(healEffect, transform.position, Quaternion.identity);
+        temp.transform.rotation = Quaternion.Euler(-90, 0, 0);
         Destroy(temp, 2f);
     }
 }

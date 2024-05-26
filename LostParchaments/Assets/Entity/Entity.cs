@@ -5,7 +5,7 @@ using Sirenix.Utilities;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class Entity : MonoBehaviour, ITargetable, IDamageable
+public abstract class Entity : MonoBehaviour, IDamageable
 {
     public string Name;
     public EntityType Type;
@@ -13,7 +13,6 @@ public abstract class Entity : MonoBehaviour, ITargetable, IDamageable
 
     public Transform spellCastingPoint;
     public Stats Stats => stats;
-    private Info _info;
     [SerializeField] private bool isTargetable;
     
     public EventChannelVoid OnHitChannel;
@@ -34,14 +33,7 @@ public abstract class Entity : MonoBehaviour, ITargetable, IDamageable
     }
 
     protected abstract void OnDie();
-
-    public Info GetInfo()
-    {
-        if (!isTargetable) return null;
-        _info = new Info(Name, stats.CurrHealth, transform);
-
-        return _info;
-    }
+    
 
     public virtual void OnHit(float damageAmount)
     {
