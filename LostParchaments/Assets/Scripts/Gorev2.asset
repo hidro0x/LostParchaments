@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f70842248860049935c330bc992f8e, type: 3}
   m_Name: Gorev2
   m_EditorClassIdentifier: 
-  Name: Bulmaca
-  Description: Mesaleleri yak
-  Dialogue: Lutfen yardim et
+  Name: "Yolu Ayd\u0131nlat!"
+  Description: "K\xF6pr\xFCn\xFCn yan\u0131ndaki me\u015Faleleri yak."
+  Dialogue: "\xC7ok iyi i\u015F \xE7\u0131kard\u0131n! \u015Eimdi ak\u015Fam karanl\u0131\u011F\u0131
+    \xE7\xF6kmeden k\xF6pr\xFC yolu i\xE7in ayd\u0131nlatma yapmam\u0131z laz\u0131m."
   state: 0
   type: 1
   targetPuzzleID: 1
