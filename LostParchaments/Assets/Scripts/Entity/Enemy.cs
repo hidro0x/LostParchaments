@@ -25,6 +25,7 @@ public class Enemy : Entity
     private bool walkPointSet;
     private bool alreadyAttacked;
     private bool takeDamage;
+    private bool isDead;
 
     public override void Awake()
     {
@@ -38,12 +39,17 @@ public class Enemy : Entity
     {
         DataHolder.Instance.AddToData_Enemy(Type);
         QuestManager.UpdateQuestProgress?.Invoke(QuestType.KILL_MOB);
-        Destroy(gameObject);
+        animator.SetBool("isDead", true);
+        isDead = true;
+        GetComponent<BoxCollider>().enabled = false;
+        navAgent.SetDestination(transform.position);
+        Destroy(gameObject, 3f);
     }
     
 
     private void Update()
     {
+        if(isDead) return;
         bool playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerLayer);
         bool playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
 

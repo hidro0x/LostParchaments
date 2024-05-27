@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WaterSpell
   m_EditorClassIdentifier: 
   Name: Water
-  Icon: {fileID: 21300000, guid: ca2d38b873df3614c89ee2964f19a174, type: 3}
+  Icon: {fileID: 21300000, guid: dc75a9a42dbc16f4bbc826bd3cee2df1, type: 3}
   cooldown: 0
   manaCost: 0
   spellPrefab: {fileID: 9087570761829400381, guid: 524eff23615b76c478246794c2e92f55,
