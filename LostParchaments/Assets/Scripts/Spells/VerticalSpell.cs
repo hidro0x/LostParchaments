@@ -49,7 +49,7 @@ public class VerticalSpell : MonoBehaviour, ICastable
             if(hitable.TryGetComponent(out IDamageable hit)) hit.OnHit(damage);
         }
         
-        var impact =Instantiate(impactParticle, point, Quaternion.identity);
+        var impact =Instantiate(impactParticle, new Vector3(point.x,point.y+1, point.z), Quaternion.identity);
         Destroy(impact, 2f);
     }
 }

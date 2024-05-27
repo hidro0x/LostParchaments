@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HealSpell
   m_EditorClassIdentifier: 
   Name: Health
-  Icon: {fileID: 21300000, guid: ca2d38b873df3614c89ee2964f19a174, type: 3}
+  Icon: {fileID: 21300000, guid: df2e3191468937a49aaef9a5aa79c14f, type: 3}
   cooldown: 5
   manaCost: 0
   spellPrefab: {fileID: 5382610349249530836, guid: 076d285dddb133940b075b8095e4ab5f,

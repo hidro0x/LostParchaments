@@ -39,7 +39,7 @@ public class Enemy : Entity
     {
         DataHolder.Instance.AddToData_Enemy(Type);
         QuestManager.UpdateQuestProgress?.Invoke(QuestType.KILL_MOB);
-        animator.SetBool("isDead", true);
+        animator.SetTrigger("isDead");
         isDead = true;
         GetComponent<BoxCollider>().enabled = false;
         navAgent.SetDestination(transform.position);

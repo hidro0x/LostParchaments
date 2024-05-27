@@ -32,7 +32,7 @@ public class SpellSO : ScriptableObject
         RaycastHit hit;
         if (!EventSystem.current.IsPointerOverGameObject())
         {
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
             {
                 entity.transform.DOLookAt(hit.point, 0.3f, AxisConstraint.Y).OnComplete(delegate
                 {
