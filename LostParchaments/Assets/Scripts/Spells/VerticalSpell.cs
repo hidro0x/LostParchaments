@@ -8,6 +8,7 @@ public class VerticalSpell : MonoBehaviour, ICastable
     [SerializeField] private int damage;
     [SerializeField] private float bufferTime;
     public LayerMask targetableLayer;
+    public LayerMask castLayer;
     public GameObject impactParticle;
     
     public float radius = 5.0F;
@@ -22,10 +23,16 @@ public class VerticalSpell : MonoBehaviour, ICastable
 
     public void Cast(Entity entity,Vector3 point)
     {
-        _transform.position = point;
         _transform.rotation = Quaternion.Euler(-90, 0, 0);
-        StartCoroutine(SpellBuffer(point));
-        Destroy(gameObject, 2f);
+        Debug.DrawRay(point, -Vector3.up, Color.red, 100f);
+        RaycastHit hit;
+        if (Physics.Raycast(new Vector3(point.x,point.y+1, point.z), -Vector3.up, out hit, 500f, castLayer))
+        {
+            _transform.position = hit.point;
+            StartCoroutine(SpellBuffer(point));
+            Destroy(gameObject, 2f);
+        }
+        
     }
 
     private void OnDrawGizmos()

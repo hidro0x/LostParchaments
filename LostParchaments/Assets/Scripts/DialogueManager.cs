@@ -10,7 +10,7 @@ public class DialogueManager : MonoBehaviour
 {
     [SerializeField]private CinemachineVirtualCamera dialogueCam;
 
-    [SerializeField] private Canvas textCanvas;
+    private Canvas textCanvas;
     [SerializeField] private Canvas playerHudCanvas;
     [SerializeField] private TextMeshProUGUI header, desc;
 
@@ -20,6 +20,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
+        textCanvas = GetComponent<Canvas>();
         Instance = this;
         cancelBtn.onClick.AddListener(CloseUI);
 
@@ -57,6 +58,7 @@ public class DialogueManager : MonoBehaviour
     void SetCam(Transform pos)
     {
         dialogueCam.LookAt = pos;
+        dialogueCam.Follow = pos;
         dialogueCam.Priority = 11;
     }
 
