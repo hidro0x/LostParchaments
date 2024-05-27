@@ -31,7 +31,8 @@ public class QuestManager : MonoBehaviour
     
     private void CheckProgress(QuestType type)
     {
-        if(_activeQuest.Type != type && _activeQuest == null) return;
+        if(_activeQuest == null) return;
+        if(_activeQuest.Type != type) return;
         if (_activeQuest.Check())
         {
             _questUI.CompleteUI();
