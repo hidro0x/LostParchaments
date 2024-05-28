@@ -47,6 +47,9 @@ public enum EntityType
 {
     PLAYER,
     SKELETON,
+    ORC,
+    BAT,
+    SLIME,
 }
 
 

@@ -9,7 +9,13 @@ public class Quest_Puzzle : Quest
 
     public override bool Check()
     {
-        return PuzzleManager.Instance.GetPuzzleByID(targetPuzzleID).CheckPuzzle();
+        if (PuzzleManager.Instance.GetPuzzleByID(targetPuzzleID).CheckPuzzle())
+        {
+            CompleteQuest();
+            return true;
+        }
+
+        return false;
     }
 
     public override string Progress()
