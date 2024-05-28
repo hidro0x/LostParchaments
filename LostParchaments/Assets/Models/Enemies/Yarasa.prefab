@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8108498151123407704}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: w_feather.001.R.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7984927376133366325}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: w_feather.002.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2894695072589394926}
   - component: {fileID: 7151016302283104392}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1355511298657381141}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: w_feather.003.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2127048082592318162}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RaycastPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,13 +239,13 @@ GameObject:
   - component: {fileID: 5364972441982858239}
   - component: {fileID: 3706085838250774257}
   - component: {fileID: 4874277796532932692}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Yarasa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &155886956162116910
 Transform:
   m_ObjectHideFlags: 0
@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Yarasa
-  Type: 1
+  Type: 3
   stats:
     baseHealth: 30
     baseMana: 100
@@ -371,7 +371,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8284762319330984658}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: w_feather.001.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,7 +403,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5721932573282706223}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: w_feather.001.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,7 +435,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4124273636764937108}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: w_feather.002.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4922625438521347363}
   - component: {fileID: 6434667208562741942}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Roundcube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -568,7 +568,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6517643350238275216}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: w_feather.001.L.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -599,7 +599,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3179593294742784532}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: spine.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,7 +632,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2578358012069946716}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wing.002.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -665,7 +665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7932216683891357627}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wing.001.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -698,7 +698,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1634125062458361575}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: w_feather.003.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -729,7 +729,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5939947074711283421}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: w_feather.001.R.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -761,7 +761,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 414474301828330569}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wing.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -793,7 +793,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8952569349167385889}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wing.001.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -826,7 +826,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1717287209671459556}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: w_feather.001.L.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -858,7 +858,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7244855685917143273}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: metarig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -890,7 +890,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1093555767421877201}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wing.002.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -923,7 +923,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8305806472001620396}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wing.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}

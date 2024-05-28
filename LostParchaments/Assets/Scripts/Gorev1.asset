@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382d6d76f7ec4e54d89b90691cdfd57b, type: 3}
   m_Name: Gorev1
   m_EditorClassIdentifier: 
-  Name: Iskelet Oldur
-  Description: Iskeletleri oldur
-  Dialogue: Iskeletleri oldurerek bana cok yardimci olursun!
+  Name: "Ortal\u0131\u011F\u0131 Temizle!"
+  Description: "Yarasalar\u0131 \xF6ld\xFCr."
+  Dialogue: "Antik kal\u0131nt\u0131larda yine huzursuzluk ba\u015Flad\u0131... B\xFCt\xFCn
+    do\u011Fay\u0131 katlediyorlar! L\xFCtfen.. l\xFCtfen bize yard\u0131m et."
   state: 0
   type: 0
   target: 3
-  targetType: 1
+  targetType: 3

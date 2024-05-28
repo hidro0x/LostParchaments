@@ -19,6 +19,7 @@ public class PlayerHUD : MonoBehaviour
     public SpellSlot SelectedSpellSlot { get; private set; }
 
     public EventChannelVoid OnHitChannel;
+    public static Action OnRefreshHud;
     private void Awake()
     {
         _mainCharacter = GameObject.Find("Player").GetComponent<MainCharacter>();
@@ -34,6 +35,7 @@ public class PlayerHUD : MonoBehaviour
     {
         StarterAssetsInputs.OnSpellChanged += ChangeSpell;
         StarterAssetsInputs.OnSpellThrowed += ThrowSpell;
+        OnRefreshHud += RefreshHUD;
         OnHitChannel.OnEventRaised += RefreshHUD;
     }
 
@@ -42,6 +44,7 @@ public class PlayerHUD : MonoBehaviour
         StarterAssetsInputs.OnSpellChanged -= ChangeSpell;
         StarterAssetsInputs.OnSpellThrowed -= ThrowSpell;
         OnHitChannel.OnEventRaised -= RefreshHUD;
+        OnRefreshHud -= RefreshHUD;
     }
     
     private void ThrowSpell()

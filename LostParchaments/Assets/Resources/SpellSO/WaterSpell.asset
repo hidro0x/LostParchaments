@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Water
   Icon: {fileID: 21300000, guid: dc75a9a42dbc16f4bbc826bd3cee2df1, type: 3}
-  cooldown: 0
-  manaCost: 0
+  cooldown: 5
+  manaCost: 10
   spellPrefab: {fileID: 9087570761829400381, guid: 524eff23615b76c478246794c2e92f55,
     type: 3}
