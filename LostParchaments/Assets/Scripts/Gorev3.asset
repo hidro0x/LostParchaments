@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gorev3
   m_EditorClassIdentifier: 
   Name: Mesaleleri yak
-  Description: Mesaleleri yak
+  Description: "Mekandaki 5 me\u015Faleyi yak."
   Dialogue: .
   state: 0
   type: 1

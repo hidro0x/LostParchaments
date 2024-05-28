@@ -17,7 +17,7 @@ public class QuestUI : MonoBehaviour
 
     public void RefreshUI(Quest quest)
     {
-        header.text = quest.name;
+        header.text = quest.Name;
         desc.text = quest.Description;
         progress.text = quest.Progress();
 

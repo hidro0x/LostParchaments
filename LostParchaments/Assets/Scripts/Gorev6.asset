@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gorev6
   m_EditorClassIdentifier: 
   Name: CANAVARI OLDUR!
-  Description: Balciki alt et!
+  Description: "Bal\xE7\u0131\u011F\u0131 alt et!"
   Dialogue: Iskeletleri oldurerek bana cok yardimci olursun!
   state: 0
   type: 0

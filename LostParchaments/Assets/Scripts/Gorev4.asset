@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gorev4
   m_EditorClassIdentifier: 
   Name: ORKLARI AVLA
-  Description: Tum orklari oldur.
+  Description: "Odadaki t\xFCm orklar\u0131 temizle!"
   Dialogue: Iskeletleri oldurerek bana cok yardimci olursun!
   state: 0
   type: 0
