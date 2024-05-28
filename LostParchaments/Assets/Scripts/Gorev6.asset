@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382d6d76f7ec4e54d89b90691cdfd57b, type: 3}
   m_Name: Gorev6
   m_EditorClassIdentifier: 
-  Name: CANAVARI OLDUR!
+  Name: Son Canavar
   Description: "Bal\xE7\u0131\u011F\u0131 alt et!"
   Dialogue: Iskeletleri oldurerek bana cok yardimci olursun!
   state: 0
