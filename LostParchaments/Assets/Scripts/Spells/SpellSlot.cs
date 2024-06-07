@@ -34,7 +34,7 @@ public class SpellSlot : MonoBehaviour
     
     private void RefreshUI()
     {
-        background.color = _isSlotSelected ? Color.yellow : Color.white;
+        background.color = _isSlotSelected ? Color.yellow : Color.black;
     }
 
     public SpellSlot SelectSlot()

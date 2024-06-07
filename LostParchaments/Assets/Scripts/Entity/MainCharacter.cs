@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainCharacter : Entity
 {
-    public override void OnHit(float damageAmount)
+    protected override void OnDie()
     {
-        base.OnHit(damageAmount);
-        
+        var temp = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(temp.name);
+
     }
+
 }

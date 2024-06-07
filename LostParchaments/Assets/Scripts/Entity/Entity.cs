@@ -5,18 +5,19 @@ using Sirenix.Utilities;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Entity : MonoBehaviour, ITargetable, IDamageable
+public abstract class Entity : MonoBehaviour, IDamageable
 {
     public string Name;
+    public EntityType Type;
     [SerializeField] private Stats stats;
 
     public Transform spellCastingPoint;
     public Stats Stats => stats;
-    private Info _info;
     [SerializeField] private bool isTargetable;
-
-
-    private void Awake()
+    
+    public EventChannelVoid OnHitChannel;
+    
+    public virtual void Awake()
     {
         stats.Init();
     }
@@ -31,28 +32,24 @@ public class Entity : MonoBehaviour, ITargetable, IDamageable
         stats.OnHealthRunsOut -= OnDie;
     }
 
-    private void OnDie()
-    {
-        Destroy(gameObject);
-    }
-
-    public Info GetInfo()
-    {
-        if (!isTargetable) return null;
-        
-        if (_info == null)
-        {
-            _info = new Info(Name, stats.CurrHealth, transform);
-        }
-        else _info.Health = stats.CurrHealth;
-
-        return _info;
-    }
+    protected abstract void OnDie();
+    
 
     public virtual void OnHit(float damageAmount)
     {
         stats.ReduceHealth(damageAmount);
+        OnHitChannel.OnEventRaised?.Invoke();
     }
+}
+
+[System.Serializable]
+public enum EntityType
+{
+    PLAYER,
+    SKELETON,
+    ORC,
+    BAT,
+    SLIME,
 }
 
 
